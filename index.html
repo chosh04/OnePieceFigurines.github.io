@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>One Piece Action Figurines</title>
+  <style>
+    body {
+      background-image: url("background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) to control transparency */
+      padding: 20px;
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .product-container {
+      background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) to control transparency */
+      padding: 20px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) to control transparency */
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    /* Added styles */
+
+    .price-box {
+      background-color: rgba(255, 255, 255, 0.8); /* Adjust the last value (0.8) to control transparency */
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    .cart-box {
+      background-color: rgba(255, 255, 255, 0.8); /* Adjust the last value (0.8) to control transparency */
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .info-box {
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>One Piece Action Figurines</h1>
+  </div>
+
+  <div class="info-box">
+    <h2>Collect Your Favorite One Piece Figurines</h2>
+    <p>Explore our wide range of action figures featuring your beloved One Piece characters.</p>
+  </div>
+
+  <div class="product-container">
+    <h3 style="color: #fff;">Featured Products</h3>
+
+    <div class="product" style="display: inline-block; border: 1px solid #ccc; padding: 10px; margin: 10px;">
+      <img src="luffy.jpg" alt="Monkey D. Luffy Figure" width="200" height="200">
+      <div class="name" style="font-weight: bold; color: #fff;">Monkey D. Luffy Figure</div>
+      <div class="price-box">
+        <span class="price" style="color: #000000;">₱1,499.99</span>
+      </div>
+      <button style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;" onclick="addToCart('Monkey D. Luffy Figure', 1499.99)">Add to Cart</button>
+    </div>
+
+    <div class="product" style="display: inline-block; border: 1px solid #ccc; padding: 10px; margin: 10px;">
+      <img src="zoro.jpg" alt="Roronoa Zoro Figure" width="200" height="200">
+      <div class="name" style="font-weight: bold; color: #fff;">Roronoa Zoro Figure</div>
+      <div class="price-box">
+        <span class="price" style="color: #000000;">₱1,499.99</span>
+      </div>
+      <button style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;" onclick="addToCart('Roronoa Zoro Figure', 1499.99)">Add to Cart</button>
+    </div>
+
+    <div class="product" style="display: inline-block; border: 1px solid #ccc; padding: 10px; margin: 10px;">
+      <img src="sanji.jpg" alt="Sanji Figure" width="200" height="200">
+      <div class="name" style="font-weight: bold; color: #fff;">Sanji Figure</div>
+      <div class="price-box">
+        <span class="price" style="color: #000000;">₱1,199.99</span>
+      </div>
+      <button style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;" onclick="addToCart('Sanji Figure', 1199.99)">Add to Cart</button>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; color: #fff;">Cart</h2>
+  <div class="cart-box" style="text-align: center;"></div>
+
+  <div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+    <button style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; margin-right: 10px;" onclick="clearCart()">Clear Cart</button>
+    <button style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;" onclick="purchase()">Purchase</button>
+  </div>
+
+  <div class="footer">
+    &copy; 2023 One Piece Action Figurines Store. All rights reserved.
+  </div>
+
+  <script>
+    var cartItems = [];
+
+    function addToCart(name, price) {
+      cartItems.push({ name: name, price: price });
+      updateCart();
+      alert("Item added to cart: " + name);
+    }
+
+    function updateCart() {
+      var cartElement = document.querySelector('.cart-box');
+      cartElement.innerHTML = '';
+
+      for (var i = 0; i < cartItems.length; i++) {
+        var item = cartItems[i];
+
+        var itemElement = document.createElement('div');
+        itemElement.innerText = item.name + ' - ₱' + item.price.toFixed(2);
+
+        cartElement.appendChild(itemElement);
+      }
+    }
+
+    function clearCart() {
+      cartItems = [];
+      updateCart();
+    }
+
+    function purchase() {
+      if (cartItems.length > 0) {
+        alert("Thank you for your purchase!");
+        clearCart();
+      } else {
+        alert("Your cart is empty. Please add items before proceeding to purchase.");
+      }
+    }
+  </script>
+</body>
+</html>
